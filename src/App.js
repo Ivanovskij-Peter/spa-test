@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import CityDetailsPage from './components/CityDetailsPage';
-import HomeView from './components/HomeView';
+import CityDetailsPage from './components/views/CityDetailsPage';
+import HomeView from './components/views/HomeView';
 
 
 const App = () => (
