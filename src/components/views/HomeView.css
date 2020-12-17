@@ -1,0 +1,7 @@
+.container {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 375px);
+   grid-column-gap: 5px;
+   grid-row-gap:30px;
+}
