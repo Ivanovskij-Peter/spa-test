@@ -1,15 +1,16 @@
 
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SearchForm from './search/SearchForm';
 // import CityCard from './CityCard';
 
-// axios.defaults.headers.common['Autorization'] = 'Bearer ce0c24f6cc74fa569602ae054bba9caa';
+axios.defaults.headers.common['Autorization'] = 'Bearer ce0c24f6cc74fa569602ae054bba9caa';
 
 const APIfetchCities = async ({
     searchQuery = ''
 } = {}) => {
-    const response = await axios.get(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&units=metric&appid=ce0c24f6cc74fa569602ae054bba9caa`);
+    const response = await axios.get(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&units=metric`);
     return console.log(response.data);
 };
 
@@ -18,8 +19,6 @@ const HomeView = () => {
     const [cities, setCities] = useState([]);
     const [query, setQuery] = useState('');
     const [error, setError] = useState(null);
-
-    
 
     useEffect(() => { 
         if (!query) {
