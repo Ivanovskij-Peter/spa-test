@@ -21,27 +21,32 @@ const HomeView = () => {
     const [query, setQuery] = useState('');
     const [error, setError] = useState(null);
 
+    if(cities.length!==0){
+        localStorage.setItem('cities',JSON.stringify(cities));
+    }
+    
     useEffect(() => { 
-
-        // localStorage.setItem('cities',JSON.stringify(cities));
 
         if (!query ) {
             return;
         }
         const fetchCities = () => {
-            APIfetchCities({ searchQuery: query }).then(responseCities=> {setCities(prevCities=>[responseCities,...prevCities]);})
+         APIfetchCities({ searchQuery: query }).then(responseCities=> {
+             setCities(prevCities=>[responseCities,...prevCities]);
+            })
         .catch(error => setError(error.message));
         };
         fetchCities();
     },[ query]);
 
-    // useEffect(()=>{
-    //    if(localStorage.getItem('cities')){
-    //     setCities(JSON.parse(localStorage.getItem('cities')))
-    // }
-    //  },[]);
+    useEffect(()=>{
+       if(localStorage.getItem('cities')){
+        setCities(JSON.parse(localStorage.getItem('cities')))
+    }
+     },[]);
     
     const onChangeQuery = query => setQuery(query);
+    
     
     return (
         <>
@@ -55,7 +60,7 @@ const HomeView = () => {
                    name={sity.name} 
                    current={sity.main.temp} 
                    wind={sity.wind.speed} 
-                   desc={sity.weather[0].description} />
+                   desc={sity.weather[0].main} />
                  </li>
             ))}
             </ul>   
