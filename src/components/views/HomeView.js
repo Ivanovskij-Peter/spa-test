@@ -24,7 +24,7 @@ const HomeView = () => {
     const [query, setQuery] = useState('');
     const [error, setError] = useState(null);
 
-    
+    // console.log('cities',cities);
     useEffect(() => { 
 
         if (!query ) {
@@ -65,7 +65,7 @@ const HomeView = () => {
         < SearchForm onSubmit={onChangeQuery} />
         <ul className="container">
             {cities.map(sity=>(
-                   <CityCard
+                   < CityCard
                    key={sity.id}
                    id={sity.id}
                    name={sity.name} 

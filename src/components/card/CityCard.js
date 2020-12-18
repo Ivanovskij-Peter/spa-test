@@ -12,7 +12,6 @@ const CityCard = ({name,current,desc,id,deleteBtn}) =>  {
     <h1 className="title">{desc} in {name}</h1>
     <p className="current">Current: {current}°С</p>
     <div>
-    {/* <button onClick={updateBtn}>Обновить</button>    */}
     <button onClick={deleteBtn}>Удалить</button> 
     <Link to={{pathname:`/cities/${id}`}}>
     <button>Подробней</button>
