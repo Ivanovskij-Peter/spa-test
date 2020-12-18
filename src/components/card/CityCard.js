@@ -3,21 +3,23 @@ import'./CityCard.css';
 import { Link } from 'react-router-dom';
 
 
-const CityCard = ({name,current,wind,desc,id}) =>  {
-    const deleteCity=(id)=>{
-
-    }
+const CityCard = ({name,current,wind,desc,id,deleteBtn}) =>  {
+   
 
     return (
-    <Link to={{pathname:`/cities/${id}`}}>    
+        <li className="item" >
+    <Link to={{pathname:`/cities/${id}`}}> 
+    Подробней   
+</Link>
     <div className="item">
     <h1 className="title">{desc} in {name}</h1>
     <p className="current">Current: {current}°С</p>
     <p className="wind">Wind Speed: {wind} м/с</p>
-    <button onClick={()=>null}>Delete</button>
     <button>Обновить</button>   
+    <button onClick={deleteBtn}>удалить</button>   
     </div> 
-</Link>
+
+</li>
 )};
 
 

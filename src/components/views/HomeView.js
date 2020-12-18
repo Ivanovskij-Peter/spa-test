@@ -6,7 +6,7 @@ import SearchForm from '../search/SearchForm';
 import CityCard from '../card/CityCard';
 import './HomeView.css';
 
-const API_KEY="e3094a3d5e6dcec4e3066ca8dd7ee7ae";
+const API_KEY="7567821800ae8ecd80610d18b7dae680";
 
 const APIfetchCities = async ({
     searchQuery = ''
@@ -46,7 +46,11 @@ const HomeView = () => {
      },[]);
     
     const onChangeQuery = query => setQuery(query);
-    
+
+    const onDeleteCity=(cityId)=>{
+        setCities(cities.filter(elem=>elem.id!==cityId));
+    }
+
     
     return (
         <>
@@ -54,16 +58,16 @@ const HomeView = () => {
         < SearchForm onSubmit={onChangeQuery} />
         <ul className='container'>
             {cities.map(sity=>(
-                <li key={sity.id} className='list'>
                    <CityCard
+                   key={sity.id}
                    id={sity.id}
                    name={sity.name} 
                    current={sity.main.temp} 
                    wind={sity.wind.speed} 
-                   desc={sity.weather[0].main} />
-                 </li>
+                   desc={sity.weather[0].main}
+                   deleteBtn={()=>onDeleteCity(sity.id)} />
             ))}
-            </ul>   
+            </ul>  
         </>
     )
 };
