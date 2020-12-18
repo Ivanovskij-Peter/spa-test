@@ -8,6 +8,9 @@ const SearchForm = ({onSubmit}) => {
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
+        if(query===''){
+            return alert('Введите название города')
+        }
         onSubmit(query);
         setQuery('');
     };

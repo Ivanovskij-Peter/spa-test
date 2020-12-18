@@ -19,12 +19,13 @@
 .current {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    margin: 0;
+    margin-bottom: 70px;
+    margin-top: 40px;
     padding: 0;
 }
 .wind{
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    margin-bottom: 50px;
+    
     padding: 0;
 }

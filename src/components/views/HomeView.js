@@ -6,6 +6,7 @@ import SearchForm from '../search/SearchForm';
 import CityCard from '../card/CityCard';
 import './HomeView.css';
 
+
 const API_KEY="7567821800ae8ecd80610d18b7dae680";
 
 const APIfetchCities = async ({
@@ -15,21 +16,22 @@ const APIfetchCities = async ({
     return response.data;
 };
 
+
+
 const HomeView = () => {
 
     const [cities, setCities] = useState([]);
     const [query, setQuery] = useState('');
     const [error, setError] = useState(null);
 
-    if(cities.length!==0){
-        localStorage.setItem('cities',JSON.stringify(cities));
-    }
     
     useEffect(() => { 
 
         if (!query ) {
             return;
         }
+        
+
         const fetchCities = () => {
          APIfetchCities({ searchQuery: query }).then(responseCities=> {
              setCities(prevCities=>[responseCities,...prevCities]);
@@ -39,6 +41,10 @@ const HomeView = () => {
         fetchCities();
     },[ query]);
 
+    if(cities.length!==0){
+        localStorage.setItem('cities',JSON.stringify(cities));
+     };
+  
     useEffect(()=>{
        if(localStorage.getItem('cities')){
         setCities(JSON.parse(localStorage.getItem('cities')))
@@ -49,6 +55,7 @@ const HomeView = () => {
 
     const onDeleteCity=(cityId)=>{
         setCities(cities.filter(elem=>elem.id!==cityId));
+        localStorage.removeItem('cities');
     }
 
     
@@ -56,17 +63,15 @@ const HomeView = () => {
         <>
         {error&&<h1>Something went wrong, please try arain</h1>}
         < SearchForm onSubmit={onChangeQuery} />
-        <ul className='container'>
+        <ul className="container">
             {cities.map(sity=>(
                    <CityCard
                    key={sity.id}
                    id={sity.id}
                    name={sity.name} 
                    current={sity.main.temp} 
-                   wind={sity.wind.speed} 
                    desc={sity.weather[0].main}
-                   deleteBtn={()=>onDeleteCity(sity.id)} />
-            ))}
+                   deleteBtn={()=>onDeleteCity(sity.id)}/>))}
             </ul>  
         </>
     )
