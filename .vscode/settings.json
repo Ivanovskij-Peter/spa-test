@@ -1,3 +1,9 @@
 {
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "editor.codeActionsOnSave": 
+    {
+        "source.fixAll": false
+    },
+    "editor.renderWhitespace": "boundary",
+    "editor.formatOnSave": true,
 }

@@ -1,9 +1,10 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import HomeView from './views/HomeView';
+
 
 
 const CityDetailsPage=lazy(()=>import('./views/CityDetailsPage'));
+const HomeView=lazy(()=>import('./views/HomeView'));
 
 const App = () => (
     <>
