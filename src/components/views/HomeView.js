@@ -50,6 +50,7 @@ const HomeView = () => {
     let updatedCities = [...cities];
     updatedCities[indx] = response.data;
     setCities(updatedCities);
+    console.log(updatedCities[indx]);
   };
 
   const onChangeQuery = query => setQuery(query);
@@ -58,6 +59,8 @@ const HomeView = () => {
     setCities(cities.filter(elem => elem.id !== cityId));
     localStorage.removeItem('cities');
   };
+
+  let time = new Date().toLocaleTimeString();
 
   return (
     <>
@@ -73,6 +76,7 @@ const HomeView = () => {
             desc={city.weather[0].main}
             deleteBtn={() => onDeleteCity(city.id)}
             updateBtn={() => APIfetchUpdateCity(city.id, indx)}
+            time={time}
           />
         ))}
       </ul>

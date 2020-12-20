@@ -2,7 +2,7 @@ import React from 'react';
 import './CityCard.css';
 import { Link } from 'react-router-dom';
 
-const CityCard = ({ name, current, desc, id, deleteBtn, updateBtn }) => {
+const CityCard = ({ name, current, desc, id, deleteBtn, updateBtn, time }) => {
   return (
     <li>
       <div className="item">
@@ -10,6 +10,7 @@ const CityCard = ({ name, current, desc, id, deleteBtn, updateBtn }) => {
           {desc} in {name}
         </h1>
         <p className="current">Current: {current}°С</p>
+        <p>last update: {time}</p>
         <div>
           <button onClick={updateBtn}>Refresh</button>
           <button onClick={deleteBtn}>Удалить</button>
