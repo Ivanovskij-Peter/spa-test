@@ -7,7 +7,7 @@ const API_KEY = '7567821800ae8ecd80610d18b7dae680';
 
 const CityDetailsPage = () => {
   const [cityInfo, setCityInfo] = useState([]);
-  const [isLiading, SetIsLoading] = useState(false);
+  const [isLoading, SetIsLoading] = useState(false);
   const { cityId } = useParams();
 
   useEffect(() => {
@@ -25,10 +25,10 @@ const CityDetailsPage = () => {
 
   return (
     <>
-      {isLiading && <p>Loading ...</p>}
-      {cityInfo.length !== 0 && (
+      {isLoading && <p>Loading ...</p>}
+      {!cityInfo.length && (
         <div className="case">
-          <h1 className="case.title"> {cityInfo.name}</h1>
+          <h1 className="title"> {cityInfo.name}</h1>
           <p>Current: {cityInfo.main.temp}°С</p>
           <p>Pressure: {cityInfo.main.pressure} гПа</p>
           <p>Feels Like: {cityInfo.main.feels_like}°С</p>

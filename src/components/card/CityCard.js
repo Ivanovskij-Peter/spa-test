@@ -13,7 +13,6 @@ const CityCard = ({ name, current, desc, id, deleteBtn, updateBtn }) => {
           {desc} in {name}
         </h1>
         <p className="current">Current: {current}°С</p>
-
         <IconButton aria-label="delete" onClick={deleteBtn} className="button">
           <DeleteIcon />
         </IconButton>
@@ -21,7 +20,7 @@ const CityCard = ({ name, current, desc, id, deleteBtn, updateBtn }) => {
           <Button color="primary" onClick={updateBtn}>
             Refresh
           </Button>
-          <Link to={{ pathname: `/cities/${id}` }} className="btn-refresh">
+          <Link to={{ pathname: `/cities/${id}` }} className="btn">
             <Button color="primary">More info</Button>
           </Link>
         </div>

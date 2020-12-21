@@ -50,7 +50,6 @@ const HomeView = () => {
     let updatedCities = [...cities];
     updatedCities[indx] = response.data;
     setCities(updatedCities);
-    console.log(updatedCities[indx]);
   };
 
   const onChangeQuery = query => setQuery(query);
@@ -62,7 +61,7 @@ const HomeView = () => {
 
   return (
     <>
-      {error && <h1>Something went wrong, please try arain</h1>}
+      {error && <h1>Something wrong, please try arain</h1>}
       <SearchForm onSubmit={onChangeQuery} />
       <ul className="container">
         {cities.map((city, indx) => (
@@ -72,7 +71,6 @@ const HomeView = () => {
             name={city.name}
             current={city.main.temp}
             desc={city.weather[0].main}
-            // dt={city.dt}
             deleteBtn={() => onDeleteCity(city.id)}
             updateBtn={() => APIfetchUpdateCity(city.id, indx)}
           />

@@ -3,7 +3,6 @@ import '../search/SearchForm.css';
 
 const SearchForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
-
   const handleChange = evt => setQuery(evt.currentTarget.value);
 
   const handleSubmit = evt => {
