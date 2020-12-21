@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './CityDetailsPage.css';
 
 const API_KEY = '7567821800ae8ecd80610d18b7dae680';
 
@@ -13,7 +14,7 @@ const CityDetailsPage = () => {
     const ApiFetchSityInfo = async () => {
       SetIsLoading(true);
       const response = await Axios.get(
-        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${API_KEY}`,
+        `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${API_KEY}`,
       );
       setCityInfo({ ...response.data });
     };
@@ -26,8 +27,8 @@ const CityDetailsPage = () => {
     <>
       {isLiading && <p>Loading ...</p>}
       {cityInfo.length !== 0 && (
-        <div>
-          <h1> {cityInfo.name}</h1>
+        <div className="case">
+          <h1 className="case.title"> {cityInfo.name}</h1>
           <p>Current: {cityInfo.main.temp}°С</p>
           <p>Pressure: {cityInfo.main.pressure} гПа</p>
           <p>Feels Like: {cityInfo.main.feels_like}°С</p>

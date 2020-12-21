@@ -8,7 +8,7 @@ const API_KEY = '7567821800ae8ecd80610d18b7dae680';
 
 const APIfetchCities = async ({ searchQuery = '' } = {}) => {
   const response = await axios.get(
-    `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&units=metric&appid=${API_KEY}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&units=metric&appid=${API_KEY}`,
   );
   return response.data;
 };
@@ -45,7 +45,7 @@ const HomeView = () => {
 
   const APIfetchUpdateCity = async (cityId = '', indx) => {
     const response = await axios.get(
-      `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${API_KEY}`,
+      `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${API_KEY}`,
     );
     let updatedCities = [...cities];
     updatedCities[indx] = response.data;
@@ -60,8 +60,6 @@ const HomeView = () => {
     localStorage.removeItem('cities');
   };
 
-  let time = new Date().toLocaleTimeString();
-
   return (
     <>
       {error && <h1>Something went wrong, please try arain</h1>}
@@ -74,9 +72,9 @@ const HomeView = () => {
             name={city.name}
             current={city.main.temp}
             desc={city.weather[0].main}
+            // dt={city.dt}
             deleteBtn={() => onDeleteCity(city.id)}
             updateBtn={() => APIfetchUpdateCity(city.id, indx)}
-            time={time}
           />
         ))}
       </ul>
