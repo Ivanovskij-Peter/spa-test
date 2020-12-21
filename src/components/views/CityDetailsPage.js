@@ -16,7 +16,7 @@ const CityDetailsPage = () => {
       const response = await Axios.get(
         `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${API_KEY}`,
       );
-      setCityInfo({ ...response.data });
+      setCityInfo(response.data);
     };
     ApiFetchSityInfo();
 
@@ -26,7 +26,7 @@ const CityDetailsPage = () => {
   return (
     <>
       {isLoading && <p>Loading ...</p>}
-      {!cityInfo.length && (
+      {cityInfo.length !== 0 && (
         <div className="case">
           <h1 className="title"> {cityInfo.name}</h1>
           <p>Current: {cityInfo.main.temp}°С</p>

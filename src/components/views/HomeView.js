@@ -43,12 +43,12 @@ const HomeView = () => {
     }
   }, []);
 
-  const APIfetchUpdateCity = async (cityId = '', indx) => {
+  const APIfetchUpdateCity = async (cityId = '', index) => {
     const response = await axios.get(
       `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${API_KEY}`,
     );
     let updatedCities = [...cities];
-    updatedCities[indx] = response.data;
+    updatedCities[index] = response.data;
     setCities(updatedCities);
   };
 
@@ -61,10 +61,10 @@ const HomeView = () => {
 
   return (
     <>
-      {error && <h1>Something wrong, please try arain</h1>}
+      {error && <h1>Something went wrong, please try again</h1>}
       <SearchForm onSubmit={onChangeQuery} />
       <ul className="container">
-        {cities.map((city, indx) => (
+        {cities.map((city, index) => (
           <CityCard
             key={city.id}
             id={city.id}
@@ -72,7 +72,7 @@ const HomeView = () => {
             current={city.main.temp}
             desc={city.weather[0].main}
             deleteBtn={() => onDeleteCity(city.id)}
-            updateBtn={() => APIfetchUpdateCity(city.id, indx)}
+            updateBtn={() => APIfetchUpdateCity(city.id, index)}
           />
         ))}
       </ul>

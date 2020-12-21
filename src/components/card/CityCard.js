@@ -9,9 +9,9 @@ const CityCard = ({ name, current, desc, id, deleteBtn, updateBtn }) => {
   return (
     <li>
       <div className="item">
-        <h1 className="title">
+        <p className="title">
           {desc} in {name}
-        </h1>
+        </p>
         <p className="current">Current: {current}°С</p>
         <IconButton aria-label="delete" onClick={deleteBtn} className="button">
           <DeleteIcon />
